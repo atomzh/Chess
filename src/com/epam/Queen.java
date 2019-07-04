@@ -9,6 +9,25 @@ public class Queen {
         x = new int[N];
     }
 
+    public void callplaceNqueens() {
+        queensPlaces(0, x.length);
+    }
+
+    public int getQuantity() { return quantity; }
+
+    public void queensPlaces(int row, int n) {
+        for (int c = 0; c < n; c++) {
+            if (canPlaceQueen(row, c)) {
+                x[row] = c;
+                if (row == n - 1) {
+                    printQueens(x);
+                } else {
+                    queensPlaces(row + 1, n);
+                }
+            }
+        }
+    }
+
     public boolean canPlaceQueen(int row, int c) {
         for (int i = 0; i < row; i++) {
             if (x[i] == c ||(i - row) == (c - x[i]) || (i - row) == (x[i] - c))
@@ -17,10 +36,6 @@ public class Queen {
             }
         }
         return true;
-    }
-
-    public int getQuantity() {
-        return quantity;
     }
 
     public void printQueens(int[] x) {
@@ -38,22 +53,4 @@ public class Queen {
         }
         System.out.println();
     }
-
-    public void placeNqueens(int row, int n) {
-        for (int c = 0; c < n; c++) {
-            if (canPlaceQueen(row, c)) {
-                x[row] = c;
-                if (row == n - 1) {
-                    printQueens(x);
-                } else {
-                    placeNqueens(row + 1, n);
-                }
-            }
-        }
-    }
-
-    public void callplaceNqueens() {
-        placeNqueens(0, x.length);
-    }
-
 }
