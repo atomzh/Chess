@@ -40,9 +40,9 @@ public class Queen {
 
     public void printQueens(int[] x) {
         quantity++;
-        int N = x.length;
-        for (int i = 0; i < N; i++) {
-            for (int j = 0; j < N; j++) {
+        int n = x.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
                 if (x[i] == j) {
                     System.out.print("Q ");
                 } else {
